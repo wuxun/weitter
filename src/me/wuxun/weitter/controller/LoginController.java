@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import me.wuxun.weitter.data.User;
 import me.wuxun.weitter.service.UserManagerService;
+import me.wuxun.weitter.util.PasswordHelper;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -27,7 +28,7 @@ public class LoginController {
 			@RequestParam("username") String name,
 			@RequestParam("password") String password) {
 		User user = userManagerService.getUserByName(name);
-		if (user != null && user.getPassword().equals(password)) {
+		if (user != null && PasswordHelper.verify(password, user.getPassword())) {
 			return "redirect:/u/" + user.getId();
 		} else {
 			return "redirect:/login";

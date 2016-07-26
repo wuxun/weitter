@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import me.wuxun.weitter.data.User;
 import me.wuxun.weitter.service.UserManagerService;
+import me.wuxun.weitter.util.PasswordHelper;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -26,12 +27,10 @@ public class RegisterController {
 	@RequestMapping(value="/register", method=POST)
 	public String post(
 			@RequestParam("username") String name,
-			@RequestParam("password") String password,
-			@RequestParam("sex") int sex,
-			@RequestParam("city") String city) {
+			@RequestParam("password") String password) {
 		User user = new User();
 		user.setName(name);
-		user.setPassword(password);
+		user.setPassword(PasswordHelper.hash(password));
 		userManagerService.register(user);
 		return "redirect:/";
 	}
