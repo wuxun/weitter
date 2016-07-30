@@ -15,15 +15,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @Controller
 public class RegisterController {
-	
+
 	@Autowired
 	UserManagerService userManagerService;
-	
+
 	@RequestMapping(value="/register", method=GET)
 	public String get() {
 		return "register";
 	}
-	
+
 	@RequestMapping(value="/register", method=POST)
 	public String post(
 			@RequestParam("username") String name,

@@ -9,9 +9,19 @@
 <title>UserHomepage</title>
 </head>
 <body>
+
 <%
 User user = (User)request.getAttribute("user");
-out.println("" + user.toString());
+//out.println("" + user.toString());
 %>
+
+<br />
+
+<textarea id="weitter" rows="5" cols="50"></textarea> <br />
+<button type="button" onclick="submitWeitter()">发送</button> <br />
+
 </body>
+
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/userHomepage.js"></script>
+
 </html>

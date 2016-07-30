@@ -18,28 +18,6 @@
     
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp"></bean>
 
-	<context:property-placeholder location="/WEB-INF/db.properties"/>
-	
- 	<bean id="datasource"
-		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="user" value="${jdbc.user}"></property>
-		<property name="password" value="${jdbc.password}"></property>
-		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
-		<property name="driverClass" value="${jdbc.driverClass}"></property>
-		<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
-		<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
-	</bean>
-
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="datasource"/>
-	</bean>
-
-	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="me.wuxun.weitter.mapper.UserMapper" />
-  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-	
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="datasource" />
-	</bean>	
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
+	<mvc:annotation-driven />
 </beans>

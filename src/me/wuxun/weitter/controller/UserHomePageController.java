@@ -17,7 +17,7 @@ public class UserHomePageController {
 
 	@Autowired
 	UserManagerService userManagerService;
-	
+
 	@RequestMapping(value="/u/{userId}", method=GET)
 	public String userHomePage(
 			@PathVariable("userId") int userId, Model model) {
