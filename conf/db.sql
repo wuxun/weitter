@@ -22,7 +22,7 @@ CREATE TABLE following (
 CREATE TABLE message (
        id BIGINT(64) NOT NULL AUTO_INCREMENT,
        user_id BIGINT(64) NOT NULL,
-       timestamp int(32) NOT NULL,
+       timestamp timestamp NOT NULL,
        content varchar(255) NOT NULL,
        ref_msg_id BIGINT(64),
        image varchar(255),
