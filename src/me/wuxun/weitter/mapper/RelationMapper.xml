@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.wuxun.weitter.mapper.RelationMapper">
+
+    <insert id="addFollower" parameterType="me.wuxun.weitter.data.User">
+        insert into followers (user_id, followers_id)
+        values (#{arg0}, #{arg1})
+    </insert>
+
+    <delete id="removeFollower" parameterType="me.wuxun.weitter.data.User">
+        delete from followers where user_id = #{arg0} and followers_id = {arg1}
+    </delete>
+
+    <select id="getAllFollowers" resultType="me.wuxun.weitter.data.User" parameterType="int">
+        select id id, name name, password password
+        from user
+        where id in (select followers_id from followers where user_id = #{arg0})
+    </select>
+
+    <select id="getUnfollowers" resultType="me.wuxun.weitter.data.User">
+        <![CDATA[
+        select id id, name name, password password
+        from user
+        where (id not in (select user_id from followers where followers_id = #{arg0})) AND (id <> #{arg0})
+        limit #{arg1}
+        ]]>
+    </select>
+
+</mapper>

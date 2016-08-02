@@ -20,8 +20,11 @@ User user = (User)request.getAttribute("user");
 <textarea id="weitter" rows="5" cols="50"></textarea> <br />
 <button type="button" onclick="submitWeitter()">发送</button> <br />
 
+<a href="<%=request.getContextPath() %>/recommend">推荐</a>
+
 </body>
 
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/userHomepage.js"></script>
 
 </html>
