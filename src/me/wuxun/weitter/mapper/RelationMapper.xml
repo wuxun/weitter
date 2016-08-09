@@ -7,25 +7,25 @@
 
     <insert id="addFollower" parameterType="me.wuxun.weitter.data.User">
         insert into followers (user_id, followers_id)
-        values (#{arg0}, #{arg1})
+        values (#{param1}, #{param2})
     </insert>
 
     <delete id="removeFollower" parameterType="me.wuxun.weitter.data.User">
-        delete from followers where user_id = #{arg0} and followers_id = {arg1}
+        delete from followers where user_id = #{param1} and followers_id = {param2}
     </delete>
 
     <select id="getAllFollowers" resultType="me.wuxun.weitter.data.User" parameterType="int">
         select id id, name name, password password
         from user
-        where id in (select followers_id from followers where user_id = #{arg0})
+        where id in (select followers_id from followers where user_id = #{param1})
     </select>
 
     <select id="getUnfollowers" resultType="me.wuxun.weitter.data.User">
         <![CDATA[
         select id id, name name, password password
         from user
-        where (id not in (select user_id from followers where followers_id = #{arg0})) AND (id <> #{arg0})
-        limit #{arg1}
+        where (id not in (select user_id from followers where followers_id = #{param1})) AND (id <> #{param1})
+        limit #{param2}
         ]]>
     </select>
 

@@ -1,11 +1,15 @@
 package me.wuxun.weitter.data;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class Weitter {
+public class Weitter implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 	private Integer userId;
 	private Timestamp timestamp;
