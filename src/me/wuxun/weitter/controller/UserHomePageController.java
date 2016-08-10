@@ -14,6 +14,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
@@ -25,16 +28,19 @@ public class UserHomePageController {
 	@Autowired
 	private TimeLineService timelineService;
 
-	@RequestMapping(value="/u/{userId}", method=GET)
-	public String userHomePage(
-			@PathVariable("userId") int userId, Model model) {
-		User user = userManagerService.getUserById(userId);
-		System.out.println(user);
-		model.addAttribute("user", user);
-		List<Weitter> weitters = timelineService.getTimeLine(userId);
-		model.addAttribute("weitters", weitters);
-		System.out.println(weitters);
-		return "userHomepage";
+	@RequestMapping(value = "/u/{userId}", method = GET)
+	public String userHomePage(@PathVariable("userId") int userId, Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		User loginUser = (User) request.getSession().getAttribute("user");
+		if (loginUser != null && loginUser.getId() == userId) {
+			User user = userManagerService.getUserById(userId);
+			model.addAttribute("user", user);
+			List<Weitter> weitters = timelineService.getTimeLine(userId);
+			model.addAttribute("weitters", weitters);
+			return "userHomepage";
+		} else {
+			return "redirect:/u/" + loginUser.getId();
+		}
 	}
 
 	public void setTimelineService(TimeLineService timelineService) {
