@@ -22,24 +22,21 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class RecommendController {
 
-	@Autowired
-	private RelationService relationService;
+    @Autowired
+    private RelationService relationService;
 
-	@RequestMapping(value="/recommend", method=GET)
-	public String getRecommendation(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			Model model) {
-		User user = (User)request.getSession().getAttribute("user");
-		List<User> userList = Collections.emptyList();
-		if (user != null) {
-			userList = relationService.getUnfollowers(user.getId(), 10);
-		}
-		model.addAttribute("userList", userList);
-		return "recommend";
-	}
+    @RequestMapping(value = "/recommend", method = GET)
+    public String getRecommendation(HttpServletRequest request, HttpServletResponse response, Model model) {
+        User user = (User) request.getSession().getAttribute("user");
+        List<User> userList = Collections.emptyList();
+        if (user != null) {
+            userList = relationService.getUnfollowers(user.getId(), 10);
+        }
+        model.addAttribute("userList", userList);
+        return "recommend";
+    }
 
-	public void setRelationService(RelationService relationService) {
-		this.relationService = relationService;
-	}
+    public void setRelationService(RelationService relationService) {
+        this.relationService = relationService;
+    }
 }

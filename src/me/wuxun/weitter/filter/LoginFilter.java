@@ -16,23 +16,23 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginFilter implements Filter {
 
-	public LoginFilter() {
-	}
+    public LoginFilter() {
+    }
 
-	public void destroy() {
-	}
+    public void destroy() {
+    }
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		Object user = httpRequest.getSession().getAttribute("user");
-		if (user == null) {
-			((HttpServletResponse) response).sendRedirect(httpRequest.getContextPath());
-		} else {
-			chain.doFilter(request, response);
-		}
-	}
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        Object user = httpRequest.getSession().getAttribute("user");
+        if (user == null) {
+            ((HttpServletResponse) response).sendRedirect(httpRequest.getContextPath());
+        } else {
+            chain.doFilter(request, response);
+        }
+    }
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
+    public void init(FilterConfig fConfig) throws ServletException {
+    }
 }

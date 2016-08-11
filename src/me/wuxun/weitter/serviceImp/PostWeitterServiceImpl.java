@@ -11,29 +11,29 @@ import me.wuxun.weitter.service.TimeLineService;
 @Service
 public class PostWeitterServiceImpl implements PostWeitterService {
 
-	@Autowired
-	private WeitterMapper weitterMapper;
+    @Autowired
+    private WeitterMapper weitterMapper;
 
-	@Autowired
-	TimeLineService timeLineService;
+    @Autowired
+    TimeLineService timeLineService;
 
-	@Override
-	public void postWeitter(Weitter weitter) {
+    @Override
+    public void postWeitter(Weitter weitter) {
         weitterMapper.addWeitterAndGetId(weitter);
 
-		timeLineService.postToFollowersTimeLine(weitter.getUserId(), weitter);
-	}
+        timeLineService.postToFollowersTimeLine(weitter.getUserId(), weitter);
+    }
 
-	@Override
-	public Weitter getWeitterById(Integer id) {
-		return weitterMapper.getWeitterById(id);
-	}
+    @Override
+    public Weitter getWeitterById(Integer id) {
+        return weitterMapper.getWeitterById(id);
+    }
 
-	public void setWeitterMapper(WeitterMapper weitterMapper) {
-		this.weitterMapper = weitterMapper;
-	}
+    public void setWeitterMapper(WeitterMapper weitterMapper) {
+        this.weitterMapper = weitterMapper;
+    }
 
-	public void setTimeLineService(TimeLineService timeLineService) {
-		this.timeLineService = timeLineService;
-	}
+    public void setTimeLineService(TimeLineService timeLineService) {
+        this.timeLineService = timeLineService;
+    }
 }

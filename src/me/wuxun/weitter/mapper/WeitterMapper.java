@@ -6,5 +6,5 @@ public interface WeitterMapper {
 
     public void addWeitterAndGetId(Weitter weitter);
 
-	public Weitter getWeitterById(Integer id);
+    public Weitter getWeitterById(Integer id);
 }

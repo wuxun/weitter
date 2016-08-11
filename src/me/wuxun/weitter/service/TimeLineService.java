@@ -6,9 +6,9 @@ import me.wuxun.weitter.data.Weitter;
 
 public interface TimeLineService {
 
-	public void addWeitter(Integer userId, Weitter weitter);
+    public void addWeitter(Integer userId, Weitter weitter);
 
-	public List<Weitter> getTimeLine(Integer userId);
+    public List<Weitter> getTimeLine(Integer userId);
 
-	public void postToFollowersTimeLine(Integer userId, Weitter weitter);
+    public void postToFollowersTimeLine(Integer userId, Weitter weitter);
 }

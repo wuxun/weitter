@@ -16,22 +16,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Controller
 public class RegisterController {
 
-	@Autowired
-	UserManagerService userManagerService;
+    @Autowired
+    UserManagerService userManagerService;
 
-	@RequestMapping(value="/register", method=GET)
-	public String get() {
-		return "register";
-	}
+    @RequestMapping(value = "/register", method = GET)
+    public String get() {
+        return "register";
+    }
 
-	@RequestMapping(value="/register", method=POST)
-	public String post(
-			@RequestParam("username") String name,
-			@RequestParam("password") String password) {
-		User user = new User();
-		user.setName(name);
-		user.setPassword(PasswordHelper.hash(password));
-		userManagerService.register(user);
-		return "redirect:/";
-	}
+    @RequestMapping(value = "/register", method = POST)
+    public String post(@RequestParam("username") String name, @RequestParam("password") String password) {
+        User user = new User();
+        user.setName(name);
+        user.setPassword(PasswordHelper.hash(password));
+        userManagerService.register(user);
+        return "redirect:/";
+    }
 }

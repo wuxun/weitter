@@ -22,28 +22,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 public class UserHomePageController {
 
-	@Autowired
-	UserManagerService userManagerService;
+    @Autowired
+    UserManagerService userManagerService;
 
-	@Autowired
-	private TimeLineService timelineService;
+    @Autowired
+    private TimeLineService timelineService;
 
-	@RequestMapping(value = "/u/{userId}", method = GET)
-	public String userHomePage(@PathVariable("userId") int userId, Model model, HttpServletRequest request,
-			HttpServletResponse response) {
-		User loginUser = (User) request.getSession().getAttribute("user");
-		if (loginUser != null && loginUser.getId() == userId) {
-			User user = userManagerService.getUserById(userId);
-			model.addAttribute("user", user);
-			List<Weitter> weitters = timelineService.getTimeLine(userId);
-			model.addAttribute("weitters", weitters);
-			return "userHomepage";
-		} else {
-			return "redirect:/u/" + loginUser.getId();
-		}
-	}
+    @RequestMapping(value = "/u/{userId}", method = GET)
+    public String userHomePage(
+            @PathVariable("userId") int userId,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        User loginUser = (User) request.getSession().getAttribute("user");
+        if (loginUser != null && loginUser.getId() == userId) {
+            User user = userManagerService.getUserById(userId);
+            model.addAttribute("user", user);
+            List<Weitter> weitters = timelineService.getTimeLine(userId);
+            model.addAttribute("weitters", weitters);
+            return "userHomepage";
+        } else {
+            return "redirect:/u/" + loginUser.getId();
+        }
+    }
 
-	public void setTimelineService(TimeLineService timelineService) {
-		this.timelineService = timelineService;
-	}
+    public void setTimelineService(TimeLineService timelineService) {
+        this.timelineService = timelineService;
+    }
 }

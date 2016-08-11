@@ -10,22 +10,22 @@ import me.wuxun.weitter.service.UserManagerService;
 @Service
 public class UserManagerServiceImp implements UserManagerService {
 
-	private UserMapper userMapper;
+    private UserMapper userMapper;
 
-	@Autowired
-	public void setUserMapper(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
-	
-	public void register(User user) {
-		userMapper.insert(user);
-	}
+    @Autowired
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
-	public User getUserById(int id) {
-		return userMapper.getUserById(id);		
-	}
-	
-	public User getUserByName(String name) {
-		return userMapper.getUserByName(name);
-	}
+    public void register(User user) {
+        userMapper.insert(user);
+    }
+
+    public User getUserById(int id) {
+        return userMapper.getUserById(id);
+    }
+
+    public User getUserByName(String name) {
+        return userMapper.getUserByName(name);
+    }
 }

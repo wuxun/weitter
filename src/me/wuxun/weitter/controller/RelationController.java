@@ -19,29 +19,29 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class RelationController {
 
-	@Autowired
-	private RelationService relationService;
+    @Autowired
+    private RelationService relationService;
 
-	@RequestMapping(value="/follow", method=POST)
-	public ResponseEntity<?> follow(
-			@RequestParam("userId") Integer userId,
-			@RequestParam("follow") boolean follow,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-		User user = (User)request.getSession().getAttribute("user");
-		if (user != null) {
-			if (follow) {
-				relationService.addFollower(userId, user.getId());
-				System.out.println("add follower");
-			} else {
-				relationService.removeFollower(userId, user.getId());
-				System.out.println("delete follower");
-			}
-		}
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
+    @RequestMapping(value = "/follow", method = POST)
+    public ResponseEntity<?> follow(
+            @RequestParam("userId") Integer userId,
+            @RequestParam("follow") boolean follow,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            if (follow) {
+                relationService.addFollower(userId, user.getId());
+                System.out.println("add follower");
+            } else {
+                relationService.removeFollower(userId, user.getId());
+                System.out.println("delete follower");
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
-	public void setRelationService(RelationService relationService) {
-		this.relationService = relationService;
-	}
+    public void setRelationService(RelationService relationService) {
+        this.relationService = relationService;
+    }
 }
