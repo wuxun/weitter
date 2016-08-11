@@ -12,7 +12,7 @@
 		from user where id=#{value}
 	</select>
 
-	<insert id="addWeitter" parameterType="me.wuxun.weitter.data.Weitter">
+	<insert id="addWeitterAndGetId" useGeneratedKeys="true" keyProperty="id" parameterType="me.wuxun.weitter.data.Weitter">
 		insert into message
 		(user_id, timestamp, content, ref_msg_id, image, video)
 		values

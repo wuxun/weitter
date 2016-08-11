@@ -19,7 +19,7 @@ public class PostWeitterServiceImpl implements PostWeitterService {
 
 	@Override
 	public void postWeitter(Weitter weitter) {
-		weitterMapper.addWeitter(weitter);
+        weitterMapper.addWeitterAndGetId(weitter);
 
 		timeLineService.postToFollowersTimeLine(weitter.getUserId(), weitter);
 	}

@@ -62,5 +62,7 @@
     src="<c:out value="${pageContext.request.contextPath}"/>/js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript"
     src="<c:out value="${pageContext.request.contextPath}"/>/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+    src="<c:out value="${pageContext.request.contextPath}"/>/js/userHomepage.js"></script>
 
 </html>
