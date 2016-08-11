@@ -17,6 +17,7 @@ public class Weitter implements Serializable {
     private Integer refMessageId;
     private String image;
     private String video;
+    private User user;
 
     public Integer getId() {
         return id;
@@ -78,5 +79,13 @@ public class Weitter implements Serializable {
     public String toString() {
         return "Weitter [id=" + id + ", userId=" + userId + ", timestamp=" + timestamp + ", content=" + content
                 + ", refMessageId=" + refMessageId + ", image=" + image + ", video=" + video + "]";
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -43,7 +43,7 @@
                     </div>
                     <div class="weitter_detail">
                         <div class="weitter_username">
-                            <c:out value="用户名"></c:out>
+                            <c:out value="${weitter.user.name}"></c:out>
                         </div>
                         <div class="weitter_timestamp">
                             <fmt:formatDate value="${weitter.timestamp}" pattern="MM-dd  HH:mm:ss" />

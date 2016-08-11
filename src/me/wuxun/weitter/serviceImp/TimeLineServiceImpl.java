@@ -14,6 +14,7 @@ import me.wuxun.weitter.data.User;
 import me.wuxun.weitter.data.Weitter;
 import me.wuxun.weitter.service.RelationService;
 import me.wuxun.weitter.service.TimeLineService;
+import me.wuxun.weitter.service.UserManagerService;
 
 @Service
 public class TimeLineServiceImpl implements TimeLineService {
@@ -27,6 +28,9 @@ public class TimeLineServiceImpl implements TimeLineService {
     @Autowired
     JdkSerializationRedisSerializer jdkSerializer;
 
+    @Autowired
+    private UserManagerService userManagerService;
+
     private static final int TIMELINE_LEN = 100;
 
     @Override
@@ -37,6 +41,9 @@ public class TimeLineServiceImpl implements TimeLineService {
     @Override
     public List<Weitter> getTimeLine(Integer userId) {
         List<Weitter> weitters = redisTemplate.opsForList().range(genKey(userId), 0, -1);
+        for (Weitter weitter : weitters) {
+            weitter.setUser(userManagerService.getUserById(weitter.getUserId()));
+        }
         return weitters;
     }
 
@@ -77,6 +84,10 @@ public class TimeLineServiceImpl implements TimeLineService {
 
     public void setJdkSerializer(JdkSerializationRedisSerializer jdkSerializer) {
         this.jdkSerializer = jdkSerializer;
+    }
+
+    public void setUserManagerService(UserManagerService userManagerService) {
+        this.userManagerService = userManagerService;
     }
 
 }
