@@ -5,6 +5,8 @@
 
 <mapper namespace="me.wuxun.weitter.mapper.RelationMapper">
 
+    <cache />
+
     <insert id="addFollower" parameterType="me.wuxun.weitter.data.User">
         insert into followers (user_id, followers_id)
         values (#{param1}, #{param2})

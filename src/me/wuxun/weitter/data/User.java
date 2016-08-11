@@ -1,9 +1,14 @@
 package me.wuxun.weitter.data;
 
+import java.io.Serializable;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -2750086841952109039L;
+
     private Integer id;
     private String name;
     private String password;

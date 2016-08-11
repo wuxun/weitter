@@ -5,6 +5,8 @@
 
 <mapper namespace="me.wuxun.weitter.mapper.WeitterMapper">
 
+    <cache />
+
 	<select id="getWeitterById" resultType="me.wuxun.weitter.data.Weitter"
 		parameterType="int">
 		select id id, user_id userId, timestamp timestamp,

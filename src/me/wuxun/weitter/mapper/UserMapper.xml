@@ -5,6 +5,8 @@
 
 <mapper namespace="me.wuxun.weitter.mapper.UserMapper">
 
+    <cache />
+
  	<select id="getUserById" resultType="me.wuxun.weitter.data.User"
 		parameterType="int">
 		select id id, name name, password password from user where id=#{value}
