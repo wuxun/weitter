@@ -13,3 +13,4 @@ hs_err_pid*
 /build/
 WebContent/WEB-INF/db.properties
 WebContent/WEB-INF/redis.properties
+.settings/
