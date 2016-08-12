@@ -1,6 +1,5 @@
 package me.wuxun.weitter.controller;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,11 +20,6 @@ public class LoginController {
     @Autowired
     UserManagerService userManagerService;
 
-    @RequestMapping(value = "/login", method = GET)
-    public String login() {
-        return "login";
-    }
-
     @RequestMapping(value = "/login", method = POST)
     public String processLogin(
             @RequestParam("username") String name,
@@ -37,7 +31,7 @@ public class LoginController {
             request.getSession().setAttribute("user", user);
             return "redirect:/u/" + user.getId();
         } else {
-            return "redirect:/login";
+            return "redirect:/?error";
         }
     }
 }
