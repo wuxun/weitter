@@ -11,7 +11,8 @@ function submitWeitter() {
 	}
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			//document.getElementById("test").innerHTML=xmlhttp.responseText;
+			document.getElementById("weitter").value = "";
+			location.reload();
 		}
 	}
 	xmlhttp.open("POST", "/weitter/postWeitter", true);
