@@ -18,7 +18,7 @@
     href="<c:out value="${pageContext.request.contextPath}"/>/css/bootstrap.min.css"
     rel="stylesheet">
 <link
-    href="<c:out value="${pageContext.request.contextPath}"/>/css/userhomepage.css"
+    href="<c:out value="${pageContext.request.contextPath}"/>/css/userHomePage.css"
     rel="stylesheet">
 
 </head>
@@ -63,6 +63,6 @@
 <script type="text/javascript"
     src="<c:out value="${pageContext.request.contextPath}"/>/js/bootstrap.min.js"></script>
 <script type="text/javascript"
-    src="<c:out value="${pageContext.request.contextPath}"/>/js/userHomepage.js"></script>
+    src="<c:out value="${pageContext.request.contextPath}"/>/js/userHomePage.js"></script>
 
 </html>
