@@ -19,7 +19,7 @@
     <select id="getAllFollowers" resultType="me.wuxun.weitter.data.User" parameterType="int">
         select id id, name name, password password
         from user
-        where id in (select followers_id from followers where user_id = #{param1})
+        where id in (select followers_id from followers where user_id = #{param1}) or id = #{param1}
     </select>
 
     <select id="getUnfollowers" resultType="me.wuxun.weitter.data.User">
