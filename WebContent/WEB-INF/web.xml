@@ -17,6 +17,11 @@
             <param-value>/WEB-INF/servlet-context.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <multipart-config>
+            <location>/tmp/weitter/upload</location>
+            <max-file-size>204800</max-file-size> <!-- 200k -->
+            <max-request-size>209920</max-request-size> <!-- 205k -->
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>springDispatcherServlet</servlet-name>
@@ -48,6 +53,11 @@
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
         <url-pattern>/u/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/avatar/*</url-pattern>
     </filter-mapping>
 
     <error-page>

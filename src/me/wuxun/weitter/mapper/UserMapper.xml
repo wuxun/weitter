@@ -7,17 +7,25 @@
 
     <cache />
 
- 	<select id="getUserById" resultType="me.wuxun.weitter.data.User"
-		parameterType="int">
-		select id id, name name, password password from user where id=#{value}
-	</select>
-	
- 	<select id="getUserByName" resultType="me.wuxun.weitter.data.User" parameterType="java.lang.String">
-		select id id, name name, password password from user where name=#{value}
-	</select>
+    <select id="getUserById" resultType="me.wuxun.weitter.data.User" parameterType="int">
+        select
+        id id, name name, password password, avatar avatar
+        from user where id=#{value}
+    </select>
 
-	<insert id="insert" parameterType="me.wuxun.weitter.data.User">
-		insert into user (name, password) 
-		values (#{name}, #{password})
-	</insert>
+    <select id="getUserByName" resultType="me.wuxun.weitter.data.User" parameterType="java.lang.String">
+        select
+        id id, name name, password password, avatar avatar from user where name=#{value}
+    </select>
+
+    <insert id="insert" parameterType="me.wuxun.weitter.data.User">
+        insert into user
+        (name, password, avatar)
+        values
+        (#{name}, #{password}, #{avatar})
+    </insert>
+
+    <update id="updateUser" parameterType="me.wuxun.weitter.data.User">
+        update user set name = #{name}, password = #{password}, avatar = #{avatar} where id = #{id}
+    </update>
 </mapper>

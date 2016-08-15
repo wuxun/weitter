@@ -9,4 +9,6 @@ public interface UserManagerService {
     public User getUserById(int id);
 
     public User getUserByName(String name);
+
+    public void updateUser(User user);
 }

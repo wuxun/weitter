@@ -16,10 +16,13 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/"
         p:suffix=".jsp"></bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
     <mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
     <mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**" />
     <mvc:resources location="/WEB-INF/img/" mapping="/img/**" />
     <mvc:resources location="/WEB-INF/static-views/" mapping="/error/**" />
+    <mvc:resources location="file:/Users/wuxun/upload/" mapping="/avatar/**"></mvc:resources>
     <mvc:annotation-driven />
 </beans>

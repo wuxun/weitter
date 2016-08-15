@@ -1,0 +1,46 @@
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 700px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.edit-container {
+    width: 100%;
+    height: 450px;
+}
+
+.edit {
+    width: 450px;
+    height: 450px;
+    float: left;
+    border: solid 1px;
+}
+
+.preview {
+    width: 150px;
+    height: 150px;
+    float: right;
+    overflow: hidden;
+    border: solid 1px;
+    border-radius: 50%;
+}
+
+.controls {
+    position: relative;
+    margin-top: 8px;
+}
+
+.select-img {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: -1x;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+}

@@ -3,3 +3,4 @@
 /register 注册
 /u/{userid}/home 用户自己主页，可以发微博
 /{userid}/info 用户展示主页
+/avatar 头像上传

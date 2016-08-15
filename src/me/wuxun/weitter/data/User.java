@@ -12,6 +12,7 @@ public class User implements Serializable {
     private Integer id;
     private String name;
     private String password;
+    private String avatar;
 
     public Integer getId() {
         return id;
@@ -37,8 +38,17 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", name=" + name + ", password=" + password + "]";
     }
+
 }
