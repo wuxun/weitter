@@ -4,6 +4,15 @@ body {
     background-color: #eee;
 }
 
+a {
+    text-decoration: none;
+    cursor: auto;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .timeline {
     width: 600px;
     margin: 0 auto;
@@ -74,4 +83,69 @@ body {
     font-size: 14px;
     padding: 1px 0 3px;
     line-height: 23px;
+}
+
+.user-info {
+    height: 165px;
+    width: 230px;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.headpic {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.headimg {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.user-info-name {
+    font-size: 14px;
+    font-weight: bold;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    padding-top: 5px;
+    margin: 0 auto;
+    line-height: 16px;
+}
+
+ul {
+    list-style: none
+}
+
+li {
+    float: left;
+    width: 60px;
+    text-align: center;
+}
+
+strong {
+    display: block;
+    font-weight: bold;
+    line-height: 18px;
+    width: 65px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.head-text {
+    color: #808080;
+    text-decoration: none;
+    display: block;
+    width: 65px;
+}
+
+.user-detail {
+    width: 180px;
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 15px;
 }
