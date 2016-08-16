@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>weitter</title>
@@ -11,7 +11,7 @@
         <div class="container">
             <form class="form-signin" method="post" action="<%=request.getContextPath() %>/login">
                 <label for="inputUsername" class="sr-only">用户名</label>
-                <input name="username" type="text" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
+                <input name="name" type="text" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
                 <label for="inputPassword" class="sr-only">密码</label>
                 <input name="password" type="password" id="inputPassword" class="form-control" placeholder="密码" required>
                 <div>

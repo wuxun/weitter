@@ -2,6 +2,8 @@ package me.wuxun.weitter.data;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Size;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -10,8 +12,13 @@ public class User implements Serializable {
     private static final long serialVersionUID = -2750086841952109039L;
 
     private Integer id;
+
+    @Size(min = 1, max = 20)
     private String name;
+
+    @Size(min = 6, max = 20)
     private String password;
+
     private String avatar;
 
     public Integer getId() {

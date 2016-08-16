@@ -22,7 +22,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = POST)
     public String processLogin(
-            @RequestParam("username") String name,
+            @RequestParam("name") String name,
             @RequestParam("password") String password,
             HttpServletRequest request,
             HttpServletResponse response) {
