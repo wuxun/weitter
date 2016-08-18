@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
     xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.5.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="me.wuxun.weitter.serviceImp" />
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -50,4 +54,17 @@
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="valueSerializer" ref="jdkSerializationRedisSerializer" />
     </bean>
+
+    <rabbit:connection-factory id="rabbitConnectionFactory" host="127.0.0.1"
+        port="5672" />
+    <rabbit:admin connection-factory="rabbitConnectionFactory" />
+    <rabbit:queue id="weitterPostQueue" name="me.wuxun.weitter.post" />
+    <rabbit:template id="rabbitTemplate" connection-factory="rabbitConnectionFactory" />
+    <bean id="asyncPostWeitterListener" class="me.wuxun.weitter.serviceImp.PostWeitterAsyncHandlerImpl">
+        <property name="timeLineService" ref="timeLineServiceImpl"></property>
+    </bean>
+    <rabbit:listener-container>
+        <rabbit:listener ref="asyncPostWeitterListener" method="handleWeitter"
+            queues="weitterPostQueue" />
+    </rabbit:listener-container>
 </beans>

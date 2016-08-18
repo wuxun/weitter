@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import me.wuxun.weitter.data.User;
 import me.wuxun.weitter.data.Weitter;
+import me.wuxun.weitter.service.PostWeitterAsync;
 import me.wuxun.weitter.service.PostWeitterService;
 
 @Controller
@@ -21,6 +22,9 @@ public class PostWeitterController {
 
     @Autowired
     private PostWeitterService postWeitterService;
+
+    @Autowired
+    private PostWeitterAsync postWeitterAsync;
 
     @RequestMapping(value = "/postWeitter", method = POST)
     public void postWeitter(
@@ -34,11 +38,16 @@ public class PostWeitterController {
             weitter.setUserId(user.getId());
             weitter.setContent(content);
             weitter.setTimestamp(new Timestamp(System.currentTimeMillis()));
-            postWeitterService.postWeitter(weitter);
+            // postWeitterService.postWeitter(weitter);
+            postWeitterAsync.postWeitter(weitter);
         }
     }
 
     public void setPostWeitterService(PostWeitterService postWeitterService) {
         this.postWeitterService = postWeitterService;
+    }
+
+    public void setPostWeitterAsync(PostWeitterAsync postWeitterAsync) {
+        this.postWeitterAsync = postWeitterAsync;
     }
 }
