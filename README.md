@@ -15,7 +15,11 @@
 - Hibernate Validator
 
 - Redis
-	- 主要用于存储用户时间线的消息队列，减少查询次数
+  - 主要用于存储用户时间线的消息队列，减少查询次数
+
+- RabbitMQ
+
+  - 用来异步发送，减少等待时间
 
 - Bootstrap
 
@@ -23,7 +27,7 @@
 
 - [Cropper](https://github.com/fengyuanchen/cropper)
 
-	- 图片剪裁上传
+  - 图片剪裁上传
 
 ## 问题
 
